@@ -21,7 +21,11 @@ var orders = [];
 function fetchOrders(isCall, isBid){
   var len = market.getBookSize(isCall, isBid);
   for(var i = 0; i < len; i++){
-    orders += market.getOrderInfoByIndex.call(i, isCall, isBid);
+    market.getOrderInfoByIndex.call(i, isCall, isBid, function(err,res){
+      if(!err){
+        orders.push(res);
+      }
+    });
   }
 }
 
