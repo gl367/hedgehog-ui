@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./res/styles/coupon.css">
+    <link rel="stylesheet" href="./res/styles/interests.css">
+    <link href="https://cdn.rawgit.com/band-x-media/SASS-Material-Design-for-Bootstrap/master/dist/material-bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"> </script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript"
+    src="https://cdn.rawgit.com/band-x-media/SASS-Material-Design-for-Bootstrap/master/dist/material-bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbD4DRMpWG4WEMKU4VVeyLEPWV_DBLvKY&callback=initMap" async defer type="text/javascript"></script>
+    <script src="res/scripts/map.js"></script>
+    <script src="res/scripts/navbar.js"></script>
+    <script src="res/scripts/interests.js" defer></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#map").hide();
+        });
+    </script>
+
+    <style>
+        #map {
+            top: 0;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            overflow: show;
+        }
+
+        body {
+            padding-top: 112px;
+        }
+        .nav-tab:first-child {
+            margin-left: 2em;
+        }
+        .nav-tab {
+            width: 220px;
+            text-align: center;
+        }
+    </style>
+
+    <title>Unchained</title>
+</head>
+
+<body>
+<div class="navigation-drawer-overlay"></div>
+
+<aside id="navigation-drawer"
+       class="navigation-drawer navigation-drawer-default navigation-drawer-fixed-left navigation-drawer-fixedleft"
+       role="navigation">
+
+    <div class="wrapper">
+        <div class="navigation-drawer-brand">
+            <h4>Unchained</h4>
+        </div>
+
+        <div class="navigation-drawer-divider"></div>
+
+        <nav class="navigation-drawer-nav">
+            <ul class="list-level-1">
+                <li>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel-heading">
+                                <img src="res/images/user_avatar.png" alt="" class="img-circle "height="100" width="100"/>
+                                <h3 class="profile-title">Jill</h3>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#" class="toggle-navigation">
+                        Profile
+                    </a>
+                </li>
+
+                <li role="presentation" class="">
+                    <a href="#" class="toggle-navigation">
+                        History
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="navigation-drawer-footer">
+            <p>
+                <a href="#" target="_blank">
+                    Privacy Policy
+                </a>
+            </p>
+            <p>
+                <a href="#" target="_blank">
+                    Terms of Service
+                </a>
+            </p>
+        </div>
+    </div>
+</aside>
+
+
+<nav class="app-bar app-bar-has-tabs elevated-1 app-bar-static app-bar-translucent bg-cyan">
+    <a class="navigation-drawer-toggle" href="#">
+        <i class="icon icon-lg material-icons text-white">menu</i>
+    </a>
+
+    <h1 class="title">Unchained</h1>
+
+    <div class="action-icons">
+        <a href="#">
+            <img src="res/images/filter-list.svg" id="filter">
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <ul class="nav nav-tabs nav-tab-yellow" role="tablist">
+                <li role="presentation" class="active"><a  id="home-tab" class="border-green nav-tab" href="#" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="true">List</a>
+                </li>
+                <li role="presentation" class=""><a id="maps-tab" class="nav-tab" href="#" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="false">Map</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="content-container">
+    <div class="container">
+        <div id="home" class="row">
+            <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="coupon-top">
+                        <img class="diamond" src="./res/images/diamond.svg">
+                        <span class="distance">300ft</span>
+                        <span class="time" id="time1"></span> left
+                        <br>
+                        <img class="starred" src="./res/images/star.svg"> 120 people liked this!
+                    </div>
+                    <a href="coupon1.html">
+                    <div class="item active">
+                        <img src="res/images/food/brunch_spread.jpg" class="img-responsive">
+                        
+                        <div class="carousel-caption">
+                            <div class="coupon-bottom">
+                                <h1>Brunch for 2</h1>
+                                <s>$30</s> $25 Brunch for 2 people!
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="breather-sml"></div>
+
+            <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="coupon-top">
+                        <img class="diamond" src="./res/images/diamond.svg">
+                        <span class="distance">350ft</span>
+                        <span class="time" id="time2"></span> left
+                        <br>
+                        <img class="starred" src="./res/images/star.svg"> 97 people liked this!
+                    </div>
+                    <a href="coupon2.html">
+                    <div class="item active">
+                        <img src="res/images/food/coffee.jpg" alt="" class="img-responsive">
+                        <div class="carousel-caption">
+                            <div class="coupon-bottom">
+                                <h1>Premium Bean Coffee</h1>
+                                <s>$2.50</s> $1.50 per cup!
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="breather-sml"></div>
+
+            <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="coupon-top">
+                        <img class="diamond" src="./res/images/diamond.svg">
+                        <span class="distance">450ft</span>
+                        <span class="time" id="time3"></span> left
+                        <br>
+                        <img class="starred" src="./res/images/star.svg"> 138 people liked this!
+                    </div>
+                    <a href="coupon3.html">
+                    <div class="item active">
+                        <img src="res/images/food/roasted_pork_and_scrambled_egg_burrito_with_some_red_pepper_salsa.jpg" alt="" class="img-responsive">
+                        <div class="carousel-caption">
+                            <div class="coupon-bottom">
+                                <h1>Fiesta Grand Burrito</h1>
+                                <s>$12</s> $10 Burrito with Fresh Garden Tomatoes
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="breather-sml"></div>
+
+            <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="coupon-top">
+                        <span class="distance">500ft</span>
+                        <span class="time" id="time4"></span> left
+                        <br>
+                        <img class="starred" src="./res/images/star.svg"> 68 people liked this!
+                    </div>
+                    <a href="coupon4.html">
+                    <div class="item active">
+                        <img src="res/images/food/strawberry_cheesecake.jpg" alt="" class="img-responsive">
+                        <div class="carousel-caption">
+                            <div class="coupon-bottom">
+                                <h1>Strawberry Cheesecake</h1>
+                                <s>$5</s> $3.99 per slice!
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="breather-sml"></div>
+
+            <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="coupon-top">
+                        <span class="distance">600ft</span>
+                        <span class="time" id="time5"></span> left
+                        <br>
+                        <img class="starred" src="./res/images/star.svg"> 59 people liked this!
+                    </div>
+                    <a href="coupon5.html">
+                    <div class="item active">
+                        <img src="res/images/food/halal.jpg" alt="" class="img-responsive">
+                        <div class="carousel-caption">
+                            <div class="coupon-bottom">
+                                <h1>Free Falafel with any Gyro</h1>
+                                $10 for the meal!
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="map"></div>
+        </div>
+
+        <div id="filter-holder">
+            <div class="card paper" id="filter-modal">
+                <div class="content">
+                    <h3>I'm interested in...</h3><br>
+                    <div class="interest" id="interest-food" toggled="true">
+                        <h4>Food</h4>
+                        <div class="switch switch-pink">
+                            <input type="checkbox" name="switch1Value" id="switch1" checked>
+                        </div>
+                    </div>
+
+                    <div class="interest" id="interest-entertainment">
+                        <h4>Entertainment</h4>
+                        <div class="switch switch-cyan">
+                            <input type="checkbox" name="switch2Value" id="switch2">
+                        </div>
+                    </div>
+
+                    <div class="interest" id="interest-clothing">
+                        <h4>Clothing</h4>
+                        <div class="switch switch-orange">
+                            <input type="checkbox" name="switch3Value" id="switch3">
+                        </div>
+                    </div>
+                    
+                    <div class="interest" id="interest-souvenirs">
+                        <h4>Souvenirs</h4>
+                        <div class="switch switch-light-green">
+                            <input type="checkbox" name="switch4Value" id="switch4">
+                        </div>
+                    </div>
+                    
+                    <div class="interest" id="interest-surprise">
+                        <h4>Surprise me!</h4>
+                        <div class="switch switch-yellow">
+                            <input type="checkbox" name="switch5Value" id="switch5">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="button-holder">
+                        <a role="button" class="btn btn-primary" id="filter-interest">Filter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdn.rawgit.com/Prinzhorn/skrollr/master/dist/skrollr.min.js"></script>
+<!--<script type="text/javascript"-->
+        <!--src="https://raw.githubusercontent.com/liabru/jquery-match-height/master/jquery.matchHeight-min.js"></script>-->
+    <script>
+        (function(){
+            createTimer("time1");
+            createTimer("time2");
+            createTimer("time3");
+            createTimer("time4");
+            createTimer("time5");
+
+            var filter = document.getElementById('filter');
+            filter.addEventListener('click', function() {toggleFilter()});
+
+            var filterButton = document.getElementById('filter-interest');
+            filterButton.addEventListener('click', function() { toggleFilter();});
+        })();
+
+        function createTimer(timeNum) {
+            var min = Math.floor(Math.random() * 30) + 30,
+                count = min * 60 + Math.floor(Math.random() * 30) + 29,
+                timer = setInterval(function() {
+                    var prevCount = count;
+                    $("#" + timeNum).html(Math.trunc(count--/60) + ":" + (count - Math.trunc(prevCount/60)*60));
+                    if (count == 0) clearInterval (timer);
+                }, 1000);
+        }
+
+        function toggleFilter() {
+            var icon = document.getElementById('filter');
+            var options = document.getElementById('filter-holder');
+
+            if (options.style.display === 'none') {
+                options.style.display = 'flex';
+            } else {
+                options.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
