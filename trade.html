@@ -99,7 +99,7 @@
 	<div id="tab0" class="tab-pane active content-container">
 		<div class="content-container">
 			<br><br><br><br><br>
-			<table class="table table-hover">
+			<table id="tab0-table" class="table table-hover">
         		<thead>
 			      <tr>
 			        <th>Strike Price</th>
@@ -154,8 +154,10 @@
 </div>
 <script type="text/javascript" src="https://cdn.rawgit.com/Prinzhorn/skrollr/master/dist/skrollr.min.js"></script>
 <script>
+        // UPDATE TABLE THROUGH API
     	//call_arr, put_arr = api_main();
-    	$("#put0").text("124");
+        var myTable = document.getElementById('tab0-table');
+        // myTable.rows[1].cells[1].innerHTML = 'Hello';
 	</script>
 </body>
 </html>
