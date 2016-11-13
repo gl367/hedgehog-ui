@@ -9,7 +9,22 @@
     <script src="res/scripts/navbar.js"></script>
 	<script src="bower_components/web3/dist/web3.min.js"></script>
     <script src="res/scripts/api.js"></script>
-    
+    <style>
+        .glyphicon.spinning {
+        animation: spin 1s infinite linear;
+        -webkit-animation: spin2 1s infinite linear;
+        }
+
+        @keyframes spin {
+            from { transform: scale(1) rotate(0deg); }
+            to { transform: scale(1) rotate(360deg); }
+        }
+
+        @-webkit-keyframes spin2 {
+            from { -webkit-transform: rotate(0deg); }
+            to { -webkit-transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
 <div class="navigation-drawer-overlay"></div>
@@ -139,7 +154,9 @@
     		</table>
     		<strong>Quantity:</strong> <input type="text" class="form-control" placeholder="10">
     		<br>
-    			<button id="purchase-call" class="btn btn-success btn-lg btn-block">Purchase</button>
+    			<button id="purchase-call" class="btn btn-success btn-lg btn-block">Purchase
+                    <span id="spinn" class="glyphicon glyphicon-refresh"></span>   
+                </button>
 		  </div>
        </div>
 	<div id="tab1" class="tab-pane content-container">
@@ -250,9 +267,14 @@
             $('#purchase-call').click(function () { 
                 console.log('click');
                 placeOrder(true, "Cotton", parseInt(q), 12, 15, eth.getBlock("latest").timestamp+15778463); // TODO
-                confirm("Order sent!");
+                $('#spinn').addClass("spinning");
+                setTimeout(function(){
+                    $('#spinn').removeClass("spinning");
+                    confirm("Order sent!");
+                }, 3000);
             });
         });
+
     </script>
 </body>
 </html>
