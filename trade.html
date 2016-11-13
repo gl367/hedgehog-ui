@@ -196,18 +196,17 @@
 <script type="text/javascript" src="https://cdn.rawgit.com/Prinzhorn/skrollr/master/dist/skrollr.min.js"></script>
     <script>
         // UPDATE TABLE THROUGH API
-    	r = api_main();
-        call_arr = openCalls(9, 13);
-        put_arr = openPuts(7, 11);
+        // call_arr = openCalls(9, 13);
+        // put_arr = openPuts(7, 11);
         var tab0_table = document.getElementById('tab0-table');
         // myTable.rows[1].cells[1].innerHTML = 'Hello';
-        for (var i = 1; i <= 5; i++) {
-            tab0_table.rows[i].cells[1].innerHTML = "$" + call_arr[i].toString();
-        }
-        var tab1_table = document.getElementById('tab1-table');
-        for (var i = 1; i <= 5; i++) {
-            tab1_table.rows[i].cells[1].innerHTML = "$" + put_arr[i].toString();
-        }
+        // for (var i = 1; i <= 5; i++) {
+        //     tab0_table.rows[i].cells[1].innerHTML = "$" + call_arr[i].toString();
+        // }
+        // var tab1_table = document.getElementById('tab1-table');
+        // for (var i = 1; i <= 5; i++) {
+        //     tab1_table.rows[i].cells[1].innerHTML = "$" + put_arr[i].toString();
+        // }
 	</script>
 </body>
 </html>

@@ -30,7 +30,7 @@ function fetchOrders(isCall, isBid){
 
 function getOpen(strikePrice, orders){
   var open = orders; // TODO
-  //var open = orders.filter(function(order){return !order[6]});
+  var open = orders.filter(function(order){return !order[7]});
   if(strikePrice != -1){
     open = open.filter(function(order){return order[2] == strikePrice});
   }
@@ -44,10 +44,18 @@ function openCalls(strike_low, strike_high) {
   for (var i = strike_low; i++; i <= strike_high) {
     var open_callAskOrders = getOpen(i,callAskOrders);
     var cleaned = [];
-    for (var j = 0; j < open_callAskOrders.length; i++) {
-      cleaned.push(open_callAskOrders[j][3])
+    for (var j = 0; j < open_callAskOrders.length; j++) {
+      cleaned.push(open_callAskOrders[j][3]["c"][0]);
+      console.log("push");
     }
-    call_arr[i-strike_low] = Math.min.apply(null, cleaned); // get lowest cost
+    console.log(cleaned);
+    if (cleaned == []) {
+      console.log("nullaasf");
+    }
+    else {
+      console.log("???");
+      call_arr[i-strike_low] = Math.min.apply(null, cleaned); // get lowest cost
+    }
   }
   return call_arr;
 
