@@ -32,3 +32,20 @@ function getOpen(strikePrice){
   }
   return open;
 }
+function api_main() {
+  var callAskOrders = fetchOrders(true, false);
+  var putAskOrders = fetchOrders(false, false);
+
+  call_arr = [];
+  put_arr = [];
+
+  for (var i = 9; i++; i < 14) {
+    var open_callAskOrders = getOpen(i,callAskOrders);
+    var open_putAskOrders = getOpen(i,putAskOrders);
+
+    call_arr[i-9] = Math.min.apply(null, open_callAskOrders);
+    put_arr[i-9] = Math.min.apply(null, open_putAskOrders);
+    return call_arr, put_arr;
+  }
+
+}
