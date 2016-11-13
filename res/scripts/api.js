@@ -41,38 +41,57 @@ function openCalls(strike_low, strike_high) {
   var callAskOrders = fetchOrders(true, false);
   var call_arr = [];
 
+  call_arr = callAskOrders.filter(function(i){return !(parseInt(i[2])<strike_low || parseInt(i[2]) > strike_high)});
+  prices = call_arr.map(function(item){return parseInt(item[3])});
+  prices = prices.sort();
+  prices = prices.reverse();
+  prices = prices.map(function(item) {return item/100});
+
+/*
   for (var i = strike_low; i++; i <= strike_high) {
     var open_callAskOrders = getOpen(i,callAskOrders);
     var cleaned = [];
     for (var j = 0; j < open_callAskOrders.length; j++) {
+
       cleaned.push(open_callAskOrders[j][3]["c"][0]);
       console.log("push");
     }
     console.log(cleaned);
-    if (cleaned == []) {
+    if (cleaned.length == 0) {
       console.log("nullaasf");
     }
     else {
       console.log("???");
-      call_arr[i-strike_low] = Math.min.apply(null, cleaned); // get lowest cost
+      call_arr[i-strike_low] = cleaned; // get lowest cost
     }
-  }
-  return call_arr;
+  }*/
+  return prices;
 
 }
 
 function openPuts(strike_low, strike_high) {
-  var putAskOrders = fetchOrders(false, false);
-  var put_arr = [];
+  var callAskOrders = fetchOrders(false, false);
+  var call_arr = [];
 
-  for (var i = strike_low; i++; i <= strike_high) {
-    var open_putAskOrders = getOpen(i,putAskOrders);
-    var cleaned = [];
-    for (var j = 0; j < open_putAskOrders.length; j++) {
-      cleaned.push(open_putAskOrders[j][3])
-    }
-    put_arr[i-strike_low] = Math.min.apply(null, cleaned); // get lowest cost
-  }
+  call_arr = callAskOrders.filter(function(i){return !(parseInt(i[2])<strike_low || parseInt(i[2]) > strike_high)});
+  prices = call_arr.map(function(item){return parseInt(item[3])});
+  prices = prices.sort();
+  prices = prices.reverse();
+  prices = prices.map(function(item) {return item/100});
+  return prices;
+  // var putAskOrders = fetchOrders(false, false);
+  // var put_arr = [];
+
+  // for (var i = strike_low; i++; i <= strike_high) {
+  //   var open_putAskOrders = getOpen(i,putAskOrders);
+  //   var cleaned = [];
+  //   for (var j = 0; j < open_putAskOrders.length; j++) {
+  //     cleaned.push(open_putAskOrders[j][3])
+  //     console.log("push");
+  //   }
+  //   put_arr[i-strike_low] = Math.min.apply(null, cleaned); // get lowest cost
+  // }
+  // return put_arr;
 }
 // function api_main(strike_low, strike_high) { // strike_low, strike_high in dollars
 //   var callAskOrders = fetchOrders(true, false);
