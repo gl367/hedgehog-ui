@@ -68,7 +68,7 @@ function openPuts(strike_low, strike_high) {
   for (var i = strike_low; i++; i <= strike_high) {
     var open_putAskOrders = getOpen(i,putAskOrders);
     var cleaned = [];
-    for (var j = 0; j < open_putAskOrders.length; i++) {
+    for (var j = 0; j < open_putAskOrders.length; j++) {
       cleaned.push(open_putAskOrders[j][3])
     }
     put_arr[i-strike_low] = Math.min.apply(null, cleaned); // get lowest cost
