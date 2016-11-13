@@ -7,8 +7,9 @@
     <script type="text/javascript"
     src="https://cdn.rawgit.com/band-x-media/SASS-Material-Design-for-Bootstrap/master/dist/material-bootstrap.min.js"></script>
     <script src="res/scripts/navbar.js"></script>
-		<script src="bower_components/web3/dist/web3.min.js"></script>
+	<script src="bower_components/web3/dist/web3.min.js"></script>
     <script src="res/scripts/api.js"></script>
+    
 </head>
 <body>
 <div class="navigation-drawer-overlay"></div>
@@ -87,10 +88,10 @@
     <div class="container">
         <div class="row">
             <ul class="nav nav-tabs nav-tab-yellow" role="tablist">
-                <li role="presentation" class="active"><a data-toggle="tab" id="home-tab" class="border-green nav-tab" href="#tab0" role="tab" data-toggle="tab">Crop Damage</a>
+                <li role="presentation" class="active"><a data-toggle="tab" id="home-tab" class="border-green nav-tab" href="#tab0" onclick="return false;" role="tab" data-toggle="tab">Crop Damage</a>
                 </li>
-                <li role="presentation" class=""><a id="supply-tab" class="nav-tab" href="#tab1" role="tab" data-toggle="tab">Supply Glut</a></li>
-                <li role="presentation" class=""><a id="both-tab" class="nav-tab" href="#tab2" role="tab" data-toggle="tab">Both</a></li>
+                <li role="presentation" class=""><a id="supply-tab" class="nav-tab" href="#tab1" onclick="return false;" role="tab" data-toggle="tab">Supply Glut</a></li>
+                <li role="presentation" class=""><a id="both-tab" class="nav-tab" href="#tab2" onclick="return false;" role="tab" data-toggle="tab">Both</a></li>
             </ul>
         </div>
     </div>
@@ -136,12 +137,11 @@
 	      	  	  </tr>
 			    </tbody>
     		</table>
-    		Quantity: <input type="text" class="form-control" placeholder="10">
+    		<strong>Quantity:</strong> <input type="text" class="form-control" placeholder="10">
     		<br>
-    			<button class="btn btn-success btn-lg btn-block">Purchase</button>
-		</div>
-
-	</div>
+    			<button id="purchase-call" class="btn btn-success btn-lg btn-block">Purchase</button>
+		  </div>
+       </div>
 	<div id="tab1" class="tab-pane content-container">
 		<div class="content-container">
 			<br><br><br>
@@ -171,28 +171,68 @@
                     <td><input type="checkbox" autocomplete="off"></td>
                   </tr>
                   <tr>
-                    <td>$10</td>
+                    <td><strong>$10</strong></td>
                     <td>$0.65</td>
                     <td><input type="checkbox" autocomplete="off"></td>
                   </tr>
                   <tr>
                     <td>11</td>
-                    <td>1.65</td>
+                    <td>$1.65</td>
                     <td><input type="checkbox" autocomplete="off"></td>
                   </tr>
                 </tbody>
             </table>
-            Quantity: <input type="text" class="form-control" placeholder="10">
+            Quantity: <input id="qty-field" type="text" class="form-control" placeholder="10">
             <br>
-                <button class="btn btn-success btn-lg btn-block">Purchase</button>
-		</div>
-	</div>
+            <button id="purchase-call2" class="btn btn-success btn-lg btn-block">Purchase</button>
+		  </div>
+	   </div>
 	<div id="tab2" class="tab-pane content-container">
 		<div class="content-container">
-			<br><br><br><br><br>
-		</div>
+            <br><br><br>
+            <div class="page-header"><h4>Protect against oversupply in the market (low crop prices)<h4></div>
+            <table id="tab1-table" class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Strike Price</th>
+                    <th>Cost</th>
+                    <th>Select</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>$7</td>
+                    <td>$0.10</td>
+                    <td><input type="checkbox" autocomplete="off"></td>
+                  </tr>
+                  <tr>
+                    <td>$8</td>
+                    <td>$0.15</td>
+                    <td><input type="checkbox" autocomplete="off"></td>
+                  </tr>
+                  <tr>
+                    <td>$9</td>
+                    <td>$0.35</td>
+                    <td><input type="checkbox" autocomplete="off"></td>
+                  </tr>
+                  <tr>
+                    <td><strong>$10</strong></td>
+                    <td>$0.65</td>
+                    <td><input type="checkbox" autocomplete="off"></td>
+                  </tr>
+                  <tr>
+                    <td>11</td>
+                    <td>$1.65</td>
+                    <td><input type="checkbox" autocomplete="off"></td>
+                  </tr>
+                </tbody>
+            </table>
+            Quantity: <input id="qty-field" type="text" class="form-control" placeholder="10">
+            <br>
+            <button id="purchase-call3" class="btn btn-success btn-lg btn-block">Purchase</button>
+          </div>
+       </div>
 	</div>
-</div>
 <script type="text/javascript" src="https://cdn.rawgit.com/Prinzhorn/skrollr/master/dist/skrollr.min.js"></script>
     <script>
         // UPDATE TABLE THROUGH API
@@ -208,6 +248,21 @@
         // for (var i = 1; i <= 5; i++) {
         //     tab1_table.rows[i].cells[1].innerHTML = "$" + put_arr[i].toString();
         // }
-	</script>
+    </script>
+    <script>
+        function purchase() {
+            console.log('click');
+        }
+        $(document).ready(function() {
+            console.log("rdy");
+            var q = $('#qty-field').val();
+            console.log("q");
+            $('#purchase-call').click(function () { 
+                console.log('click');
+                placeOrder(true, "Cotton", parseInt(q), 12, 15, eth.getBlock("latest").timestamp+15778463); // TODO
+                confirm("Order sent!");
+            });
+        });
+    </script>
 </body>
 </html>

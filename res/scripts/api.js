@@ -95,7 +95,8 @@ function openPuts(strike_low, strike_high) {
 }
 
 function placeOrder(isCall, commodity, quantity, strikePrice, orderPrice, expiration){
-  market.placeOrder(isCall, true, commodity, quantity, strikePrice, expiration,(new Date()).getTime(), {from:eth.coinbase, gas:2000000});
+  market.placeOrder(isCall, true, commodity, quantity, strikePrice, orderPrice, expiration,134, {from:eth.coinbase, gas:2000000});
+  console.log("Sent!");
 }
 // function api_main(strike_low, strike_high) { // strike_low, strike_high in dollars
 //   var callAskOrders = fetchOrders(true, false);
