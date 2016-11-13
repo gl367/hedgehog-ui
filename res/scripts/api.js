@@ -93,6 +93,10 @@ function openPuts(strike_low, strike_high) {
   // }
   // return put_arr;
 }
+
+function placeOrder(isCall, commodity, quantity, strikePrice, orderPrice, expiration){
+  market.placeOrder(isCall, true, commodity, quantity, strikePrice, expiration,(new Date()).getTime(), {from:eth.coinbase, gas:2000000});
+}
 // function api_main(strike_low, strike_high) { // strike_low, strike_high in dollars
 //   var callAskOrders = fetchOrders(true, false);
 //   var putAskOrders = fetchOrders(false, false);
